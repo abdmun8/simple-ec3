@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$config['base_url'] = 'https://dev.am8.space/ec3/';
+$config['base_url'] = 'http://imda-mebel.xyz/';
 
 /*
 |--------------------------------------------------------------------------
