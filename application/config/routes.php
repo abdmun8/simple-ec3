@@ -41,8 +41,8 @@ $route['check_email'] = 'web/check_email';
 
 //Admin Panel Route
 $route['dashboard'] = 'admin/index';
-$route['manage/order'] = 'manageorder/manage_order';
-$route['order/details/(:num)'] = 'manageorder/order_details/$1';
+$route['manage/order'] = 'order/manage_order';
+$route['order/details/(:num)'] = 'order/order_details/$1';
 
 
 //Category  Route List

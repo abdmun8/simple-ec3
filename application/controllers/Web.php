@@ -363,7 +363,7 @@ class Web extends CI_Controller {
         $data['order_details_info'] = $this->manageorder_model->orderdetails_info_by_id($order_id);
         $data['order_info'] = $this->manageorder_model->order_info_by_id($order_id);
 
-        $this->load->library('pdf');
+        $this->load->library('Pdf');
         $this->pdf->load_view('admin/pages/pdf', $data);
         $this->pdf->setPaper('A4', 'portrait');
         $this->pdf->render();

@@ -2,13 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ManageOrder extends CI_Controller{
+class Order extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
         $this->get_user();
-    }
-    
+    }    
     
     public function manage_order(){
         $data= array();
