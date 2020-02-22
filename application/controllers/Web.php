@@ -1,10 +1,12 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Web extends CI_Controller {
+class Web extends CI_Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $data = array();
         $data['all_featured_products'] = $this->web_model->get_all_featured_product();
         $data['all_new_products'] = $this->web_model->get_all_new_product();
@@ -14,14 +16,16 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function contact() {
+    public function contact()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/contact');
         $this->load->view('web/inc/footer');
     }
 
-    public function cart() {
+    public function cart()
+    {
         $data = array();
         $data['cart_contents'] = $this->cart->contents();
         $this->load->view('web/inc/header');
@@ -29,7 +33,8 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function product() {
+    public function product()
+    {
         $data = array();
         $data['get_all_product'] = $this->web_model->get_all_product();
         $this->load->view('web/inc/header');
@@ -37,7 +42,8 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function single($id) {
+    public function single($id)
+    {
         $data = array();
         $data['get_single_product'] = $this->web_model->get_single_product($id);
         $data['get_all_category'] = $this->web_model->get_all_category();
@@ -46,14 +52,16 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function error() {
+    public function error()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/error');
         $this->load->view('web/inc/footer');
     }
 
-    public function category_post($id) {
+    public function category_post($id)
+    {
         $data = array();
         $data['get_all_product'] = $this->web_model->get_all_product_by_cat($id);
         $this->load->view('web/inc/header');
@@ -61,7 +69,8 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function save_cart() {
+    public function save_cart()
+    {
         $data = array();
         $product_id = $this->input->post('product_id');
         $results = $this->web_model->get_product_by_id($product_id);
@@ -76,7 +85,8 @@ class Web extends CI_Controller {
         redirect('cart');
     }
 
-    public function update_cart() {
+    public function update_cart()
+    {
         $data = array();
         $data['qty'] = $this->input->post('qty');
         $data['rowid'] = $this->input->post('rowid');
@@ -85,14 +95,16 @@ class Web extends CI_Controller {
         redirect('cart');
     }
 
-    public function remove_cart() {
+    public function remove_cart()
+    {
 
         $data = $this->input->post('rowid');
         $this->cart->remove($data);
         redirect('cart');
     }
 
-    public function register_success() {
+    public function register_success()
+    {
         $customer_name = $this->session->flashdata('customer_name');
         if (!$customer_name) {
             redirect('customer/register');
@@ -103,28 +115,32 @@ class Web extends CI_Controller {
         $this->load->view('web/inc/footer');
     }
 
-    public function user_form() {
+    public function user_form()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/user_form');
         $this->load->view('web/inc/footer');
     }
 
-    public function customer_register() {
+    public function customer_register()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/customer_register');
         $this->load->view('web/inc/footer');
     }
 
-    public function customer_login() {
+    public function customer_login()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/customer_login');
         $this->load->view('web/inc/footer');
     }
 
-    public function customer_save() {
+    public function customer_save()
+    {
         $data = array();
         $data['customer_name'] = $this->input->post('customer_name');
         $data['customer_email'] = $this->input->post('customer_email');
@@ -160,7 +176,8 @@ class Web extends CI_Controller {
         }
     }
 
-    public function customer_logincheck() {
+    public function customer_logincheck()
+    {
         $data = array();
         $data['customer_email'] = $this->input->post('customer_email');
         $data['customer_password'] = md5($this->input->post('customer_password'));
@@ -184,7 +201,8 @@ class Web extends CI_Controller {
         }
     }
 
-    public function customer_shipping_login() {
+    public function customer_shipping_login()
+    {
         $data = array();
         $data['customer_email'] = $this->input->post('customer_email');
         $data['customer_password'] = md5($this->input->post('customer_password'));
@@ -208,7 +226,8 @@ class Web extends CI_Controller {
         }
     }
 
-    public function customer_shipping_register() {
+    public function customer_shipping_register()
+    {
         $data = array();
         $data['customer_name'] = $this->input->post('customer_name');
         $data['customer_email'] = $this->input->post('customer_email');
@@ -244,14 +263,16 @@ class Web extends CI_Controller {
         }
     }
 
-    public function customer_shipping() {
+    public function customer_shipping()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/customer_shipping');
         $this->load->view('web/inc/footer');
     }
 
-    public function save_shipping_address() {
+    public function save_shipping_address()
+    {
         $data = array();
         $data['shipping_name'] = $this->input->post('shipping_name');
         $data['shipping_email'] = $this->input->post('shipping_email');
@@ -284,21 +305,24 @@ class Web extends CI_Controller {
         }
     }
 
-    public function checkout() {
+    public function checkout()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/checkout');
         $this->load->view('web/inc/footer');
     }
 
-    public function payment() {
+    public function payment()
+    {
         $data = array();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/payment');
         $this->load->view('web/inc/footer');
     }
 
-    public function save_order() {
+    public function save_order()
+    {
         $data['payment_type'] = $this->input->post('payment');
 
         $this->form_validation->set_rules('payment', 'Payment', 'trim|required');
@@ -333,10 +357,8 @@ class Web extends CI_Controller {
             }
 
             if ($payment_method == 'paypal') {
-                
             }
             if ($payment_method == 'cashon') {
-                
             }
 
 
@@ -349,7 +371,8 @@ class Web extends CI_Controller {
         }
     }
 
-    public function pdf($order_id) {
+    public function pdf($order_id)
+    {
         $data = array();
         $order_info = $this->manageorder_model->order_info_by_id($order_id);
         $customer_id = $order_info->customer_id;
@@ -370,11 +393,12 @@ class Web extends CI_Controller {
         $this->pdf->stream("welcome.pdf");
     }
 
-    public function search() {
+    public function search()
+    {
 
         $search = $this->input->get('search');
-        
-        if(!empty($search)){
+
+        if (!empty($search)) {
             $data = array();
             $data['get_all_product'] = $this->web_model->get_all_search_product($search);
             $data['search'] = $search;
@@ -386,16 +410,24 @@ class Web extends CI_Controller {
             } else {
                 redirect('error');
             }
+        } else {
+            redirect('error');
         }
-        else {
-                redirect('error');
-            }
     }
-    
-    function logout(){
+
+    function logout()
+    {
         $this->session->unset_userdata('customer_id');
         $this->session->unset_userdata('customer_email');
         redirect('customer/login');
     }
 
+    function getCity()
+    {
+        $id = $this->input->get('id');
+        if (isset($id)) {
+            $result = $this->db->get_where('city', ['province_id' => $this->input->get('id')])->result();
+            echo json_encode(['data' => $result, 'success' => TRUE]);
+        }
+    }
 }

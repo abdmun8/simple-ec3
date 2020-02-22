@@ -55,10 +55,10 @@ class Themeoption extends CI_Controller {
 
         if (!empty($_FILES['site_logo']['name'])) {
             $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 555;
-            $config['max_width'] = 555;
-            $config['max_height'] = 555;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|webm';
+            $config['max_size'] = 1000;
+            $config['max_width'] = 1000;
+            $config['max_height'] = 1000;
 
             $this->upload->initialize($config);
 
@@ -78,7 +78,7 @@ class Themeoption extends CI_Controller {
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 555;
-            $config['max_width'] = 555;
+            $config['max_width'] = 555; 
             $config['max_height'] = 555;
 
             $this->upload->initialize($config);
