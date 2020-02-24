@@ -53,7 +53,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="city" name="city" class="frm-field required" name="shipping_city_id">
+                                    <select id="shipping_city_id" name="shipping_city_id" class="frm-field required">
                                         <option selected disabled value="null">Pilih Kota</option>
                                     </select>
                                 </div>
@@ -123,12 +123,12 @@
 
     function cekOngkir() {
         if (!$('#kurir').val()) {
-            alert('Pilih Kurir!')
+            alert('Pilih Kurir!');
             $('#shipping_city_id').val('')
             return;
         }
 
-        if (!$('#province').val()) {
+        if (!$('#shipping_province_id').val()) {
             alert('Pilih provinsi!')
             return;
         }
