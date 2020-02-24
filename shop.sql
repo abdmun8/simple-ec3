@@ -332,9 +332,12 @@ CREATE TABLE `tbl_shipping` (
   `shipping_email` varchar(100) NOT NULL,
   `shipping_address` text NOT NULL,
   `shipping_city` varchar(100) NOT NULL,
-  `shipping_country` varchar(50) NOT NULL,
+  `shipping_country` varchar(50) NOT NULL DEFAULT 'Indonesia',
   `shipping_phone` varchar(20) NOT NULL,
   `shipping_zipcode` varchar(20) NOT NULL,
+  `shipping_city_id` int(11) DEFAULT NULL,
+  `shipping_courier` varchar(100) DEFAULT NULL,
+  `chpping_cost` int(11) DEFAULT NULL,
   PRIMARY KEY (`shipping_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -345,7 +348,7 @@ CREATE TABLE `tbl_shipping` (
 
 LOCK TABLES `tbl_shipping` WRITE;
 /*!40000 ALTER TABLE `tbl_shipping` DISABLE KEYS */;
-INSERT INTO `tbl_shipping` VALUES (3,4,'Amjad Hossain','amjad@gmail.com','bangladesh','comilla','Bangladesh','555','555'),(4,4,'Amjad Hossain','amjad2@gmail.com','bangladesh','comilla','Pakistan','555','555'),(5,4,'Amjad Hossain','amjad4@gmail.com','bangladesh','comilla','Bangladesh','555','555'),(6,4,'Amjad Hossain','amjad62@gmail.com','bangladesh','comilla','Afghanistan','555','555'),(7,4,'Amjad Hossain','amjad23@gmail.com','bangladesh','comilla','Afghanistan','555','555'),(8,4,'Amjad Hossain','amjad233@gmail.com','bangladesh','comilla','Bangladesh','555','555'),(9,0,'Rostom','rostom@gmail.com','bangladesh','comilla','Bangladesh','555','555');
+INSERT INTO `tbl_shipping` VALUES (3,4,'Amjad Hossain','amjad@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(4,4,'Amjad Hossain','amjad2@gmail.com','bangladesh','comilla','Pakistan','555','555',NULL,NULL,NULL),(5,4,'Amjad Hossain','amjad4@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(6,4,'Amjad Hossain','amjad62@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(7,4,'Amjad Hossain','amjad23@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(8,4,'Amjad Hossain','amjad233@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(9,0,'Rostom','rostom@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tbl_shipping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,4 +441,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 19:08:19
+-- Dump completed on 2020-02-25  5:48:12

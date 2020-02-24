@@ -45,18 +45,6 @@
                                 <div>
                                     <input type="text" name="customer_address" placeholder="Alamat">
                                 </div>
-
-                                <div>
-                                    <select id="country" name="customer_country" class="frm-field required">
-                                        <option value="null">Pilih negara</option>
-                                        <option value="Afghanistan">Indonesia</option>
-
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <input type="text" name="customer_zipcode" placeholder="Kode POS">
-                                </div>
                             </td>
                         </tr>
                     </tbody>
