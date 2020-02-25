@@ -34,7 +34,7 @@
                             <td>
                                 <div id="pilih_kurir" style="display:block;">
                                     <div>
-                                        <select id="kurir" name="kurir" class="frm-field required">
+                                        <select id="shipping_courier" name="shipping_courier" class="frm-field required">
                                             <option selected disabled value="">Pilih Kurir</option>
                                             <option value="jne">JNE</option>
                                             <option value="pos">POS</option>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div>
                                     <select id="shipping_city_id" name="shipping_city_id" class="frm-field required">
-                                        <option selected disabled value="null">Pilih Kota</option>
+                                        <option selected disabled value="null">Pilih Kota / Kabupaten</option>
                                     </select>
                                 </div>
                             </td>
@@ -99,8 +99,10 @@
                 </div>
                 <div class="clear"></div>
                 <div>
-                    <input type="hidden" name="shipping_city" />
-                    <input type="hidden" name="shipping_courier" />
+                    <input type="hidden" id="shipping_city" name="shipping_city" />
+                    <input type="hidden" id="customer_id" name="customer_id" value="<?= $this->session->userdata('customer_id') ?>" />
+                    <input type="hidden" id="shipping_email" name="shipping_email" value="<?= $this->session->userdata('customer_email') ?>" />
+                    <input type="hidden" id="shipping_country" name="shipping_country" value="Indonesia" />
                 </div>
             </form>
         </div>
@@ -122,7 +124,7 @@
     }
 
     function cekOngkir() {
-        if (!$('#kurir').val()) {
+        if (!$('#shipping_courier').val()) {
             alert('Pilih Kurir!');
             $('#shipping_city_id').val('')
             return;
@@ -139,7 +141,7 @@
         }
         $.post(base_url + 'Web/getOngkir', {
             destination: $('#shipping_city_id').val(),
-            kurir: $('#kurir').val(),
+            kurir: $('#shipping_courier').val(),
         }, (res) => {
             var data_ongkir = res.data.rajaongkir;
             if (data_ongkir) {
@@ -151,9 +153,9 @@
                 $('#from-data').text(`${from_data.city_name} - ${from_data.province}`);
                 $('#to-data').text(`${to_data.city_name} - ${to_data.province}`);
 
-                // set hiden form
-                $('#shipping_courier').text(results.name);
-                $('#shipping_city').text(to_data.city_name);
+                // set hidden
+                var city_name = $("#shipping_city_id option:selected").text();
+                $("#shipping_city").val(city_name)
 
                 $("#table-pengiriman").children().remove();
                 var html = '';
@@ -164,7 +166,7 @@
                     for (let h = 0; h < item.cost.length; h++) {
                         const type = item.cost[h];
                         html += `<tr>
-                            <td style="width:30% !important;"><input type="radio" name="harga" value="${type.value}" /></td>
+                            <td style="width:30% !important;"><input type="radio" name="shipping_cost" value="${type.value}" /></td>
                             <td style="width:30% !important;">Harga: Rp. ${type.value}</td>
                             <td style="width:30% !important;">Estimesi: ${type.etd} Hari</td>
                             </tr>`;
@@ -179,6 +181,12 @@
 
     function saveForm() {
         if (confirm('Apakah anda yakin data sudah benar?')) {
+            var checked = $("input[name='shipping_cost']:checked").val()
+            console.log(checked);
+            if (!checked) {
+                alert('Pilih jenis pengiriman');
+                return;
+            }
             $('#form-shipping').submit();
         }
     }

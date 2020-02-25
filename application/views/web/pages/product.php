@@ -29,7 +29,7 @@
         <?php
         }
         ?>
-        <div class="content_pagi">
+        <!-- <div class="content_pagi">
             <div class="pagination">
                 <ul>
                     <li><a href="#">Prev</a></li>
@@ -41,7 +41,7 @@
                 </ul>
             </div>
             <div class="clear"></div>
-        </div>
+        </div> -->
 
     </div>
 </div>

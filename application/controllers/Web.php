@@ -274,35 +274,21 @@ class Web extends CI_Controller
 
     public function save_shipping_address()
     {
-        $data = array();
-        $data['shipping_name'] = $this->input->post('shipping_name');
-        // $data['shipping_email'] = $this->input->post('shipping_email');
-        $data['shipping_address'] = $this->input->post('shipping_address');
-        $data['shipping_city'] = $this->input->post('shipping_city');
-        // $data['shipping_country'] = $this->input->post('shipping_country');
-        $data['shipping_phone'] = $this->input->post('shipping_phone');
-        $data['shipping_cost'] = $this->input->post('shipping_cost');
-        // $data['shipping_zipcode'] = $this->input->post('shipping_zipcode');
-
-        // $this->form_validation->set_rules('shipping_name', 'Shipping Name', 'trim|required');
-        // $this->form_validation->set_rules('shipping_email', 'Shipping Email', 'trim|required|valid_email|is_unique[tbl_shipping.shipping_email]');
-        // $this->form_validation->set_rules('shipping_address', 'Shipping Address', 'trim|required');
-        // $this->form_validation->set_rules('shipping_city', 'Shipping City', 'trim|required');
-        // $this->form_validation->set_rules('shipping_country', 'Shipping Country', 'trim|required');
-        // $this->form_validation->set_rules('shipping_phone', 'Shipping Phone', 'trim|required');
-        // $this->form_validation->set_rules('shipping_zipcode', 'Shipping Zipcode', 'trim|required');
-
-        if ($this->form_validation->run() == true) {
-            $result = $this->web_model->save_shipping_address($data);
-            $this->session->set_userdata('shipping_id', $result);
-            if ($result) {
-                redirect('checkout');
-            } else {
-                $this->session->set_flashdata('message', 'Customer Shipping Fail');
-                redirect('customer/shipping');
-            }
+        // var_dump($_POST);
+        // die;
+        // $data['shipping_name'] = $this->input->post('shipping_name');
+        // $data['shipping_address'] = $this->input->post('shipping_address');
+        // $data['shipping_city'] = $this->input->post('shipping_city');
+        // $data['shipping_phone'] = $this->input->post('shipping_phone');
+        // $data['shipping_cost'] = $this->input->post('shipping_cost');
+        $data = $this->input->post();
+        unset($data['shipping_province_id']);
+        $result = $this->web_model->save_shipping_address($data);
+        $this->session->set_userdata('shipping_id', $result);
+        if ($result) {
+            redirect('checkout');
         } else {
-            $this->session->set_flashdata('message', validation_errors());
+            $this->session->set_flashdata('message', 'Customer Shipping Fail');
             redirect('customer/shipping');
         }
     }
