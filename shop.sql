@@ -147,7 +147,7 @@ CREATE TABLE `tbl_customer` (
   `customer_country` varchar(100) NOT NULL,
   `customer_active` tinyint(4) NOT NULL COMMENT 'Active=1,Unactive=0',
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `tbl_customer` (
 
 LOCK TABLES `tbl_customer` WRITE;
 /*!40000 ALTER TABLE `tbl_customer` DISABLE KEYS */;
-INSERT INTO `tbl_customer` VALUES (4,'Rostom Ali4444','customer@gmail.com','202cb962ac59075b964b07152d234b70','Comilla,Bangladesh','Comilla','0152698','014795','Bangladesh',0);
+INSERT INTO `tbl_customer` VALUES (4,'Rostom Ali4444','customer@gmail.com','202cb962ac59075b964b07152d234b70','Comilla,Bangladesh','Comilla','0152698','014795','Bangladesh',0),(5,'Abdul munim','abdul@gmail.com','202cb962ac59075b964b07152d234b70','jakarta selatan','jakarta','','0986667','',0);
 /*!40000 ALTER TABLE `tbl_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +215,7 @@ CREATE TABLE `tbl_order` (
   `order_total` float NOT NULL,
   `actions` varchar(50) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `tbl_order` (
 
 LOCK TABLES `tbl_order` WRITE;
 /*!40000 ALTER TABLE `tbl_order` DISABLE KEYS */;
-INSERT INTO `tbl_order` VALUES (2,4,7,8,11500,'Pending'),(3,4,8,9,81075,'Pending'),(8,4,9,14,402500,'Pending');
+INSERT INTO `tbl_order` VALUES (2,4,7,8,11500,'Pending'),(3,4,8,9,81075,'Pending'),(8,4,9,14,402500,'Pending'),(9,4,10,15,517500,'Pending'),(10,4,11,16,747500,'Pending');
 /*!40000 ALTER TABLE `tbl_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `tbl_order_details` (
   `product_sales_quantity` int(11) NOT NULL,
   `product_image` varchar(55) DEFAULT NULL,
   PRIMARY KEY (`order_details_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,7 +253,7 @@ CREATE TABLE `tbl_order_details` (
 
 LOCK TABLES `tbl_order_details` WRITE;
 /*!40000 ALTER TABLE `tbl_order_details` DISABLE KEYS */;
-INSERT INTO `tbl_order_details` VALUES (1,2,5,'Product Five',10000,1,NULL),(2,3,5,'Product Five',10000,4,NULL),(3,3,3,'Product Three',3500,3,NULL),(4,3,1,'Product One',20000,1,NULL),(5,8,4,'Product Four',350000,1,'pic3.jpg');
+INSERT INTO `tbl_order_details` VALUES (1,2,5,'Product Five',10000,1,NULL),(2,3,5,'Product Five',10000,4,NULL),(3,3,3,'Product Three',3500,3,NULL),(4,3,1,'Product One',20000,1,NULL),(5,8,4,'Product Four',350000,1,'pic3.jpg'),(6,9,8,'Furniture',450000,1,'sofa_6_2.jpg'),(7,10,8,'Furniture',450000,1,'sofa_6_2.jpg'),(8,10,18,'Furniture8',200000,1,'sofa_.jpg');
 /*!40000 ALTER TABLE `tbl_order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +269,7 @@ CREATE TABLE `tbl_payment` (
   `payment_type` varchar(50) NOT NULL,
   `actions` varchar(50) NOT NULL DEFAULT 'pending',
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +278,7 @@ CREATE TABLE `tbl_payment` (
 
 LOCK TABLES `tbl_payment` WRITE;
 /*!40000 ALTER TABLE `tbl_payment` DISABLE KEYS */;
-INSERT INTO `tbl_payment` VALUES (1,'cashon','pending'),(2,'ssl','pending'),(3,'cashon','pending'),(4,'cashon','pending'),(5,'cashon','pending'),(6,'cashon','pending'),(7,'cashon','pending'),(8,'cashon','pending'),(9,'cashon','pending'),(10,'cashon','pending'),(11,'cashon','pending'),(12,'cashon','pending'),(13,'cashon','pending'),(14,'cashon','pending');
+INSERT INTO `tbl_payment` VALUES (1,'cashon','pending'),(2,'ssl','pending'),(3,'cashon','pending'),(4,'cashon','pending'),(5,'cashon','pending'),(6,'cashon','pending'),(7,'cashon','pending'),(8,'cashon','pending'),(9,'cashon','pending'),(10,'cashon','pending'),(11,'cashon','pending'),(12,'cashon','pending'),(13,'cashon','pending'),(14,'cashon','pending'),(15,'cashon','pending'),(16,'Transfer','pending');
 /*!40000 ALTER TABLE `tbl_payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,9 +337,9 @@ CREATE TABLE `tbl_shipping` (
   `shipping_zipcode` varchar(20) NOT NULL,
   `shipping_city_id` int(11) DEFAULT NULL,
   `shipping_courier` varchar(100) DEFAULT NULL,
-  `chpping_cost` int(11) DEFAULT NULL,
+  `shipping_cost` int(11) DEFAULT NULL,
   PRIMARY KEY (`shipping_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +348,7 @@ CREATE TABLE `tbl_shipping` (
 
 LOCK TABLES `tbl_shipping` WRITE;
 /*!40000 ALTER TABLE `tbl_shipping` DISABLE KEYS */;
-INSERT INTO `tbl_shipping` VALUES (3,4,'Amjad Hossain','amjad@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(4,4,'Amjad Hossain','amjad2@gmail.com','bangladesh','comilla','Pakistan','555','555',NULL,NULL,NULL),(5,4,'Amjad Hossain','amjad4@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(6,4,'Amjad Hossain','amjad62@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(7,4,'Amjad Hossain','amjad23@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(8,4,'Amjad Hossain','amjad233@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(9,0,'Rostom','rostom@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL);
+INSERT INTO `tbl_shipping` VALUES (3,4,'Amjad Hossain','amjad@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(4,4,'Amjad Hossain','amjad2@gmail.com','bangladesh','comilla','Pakistan','555','555',NULL,NULL,NULL),(5,4,'Amjad Hossain','amjad4@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(6,4,'Amjad Hossain','amjad62@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(7,4,'Amjad Hossain','amjad23@gmail.com','bangladesh','comilla','Afghanistan','555','555',NULL,NULL,NULL),(8,4,'Amjad Hossain','amjad233@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(9,0,'Rostom','rostom@gmail.com','bangladesh','comilla','Bangladesh','555','555',NULL,NULL,NULL),(10,4,'asep','customer@gmail.com','jakarta','Bangli','Indonesia','075945794','',32,'jne',29000),(11,4,'jaka','customer@gmail.com','banten','Berau','Indonesia','08957645','',66,'jne',88000);
 /*!40000 ALTER TABLE `tbl_shipping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,4 +441,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-25  5:48:12
+-- Dump completed on 2020-03-08  6:59:25

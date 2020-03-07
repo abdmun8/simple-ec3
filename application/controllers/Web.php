@@ -148,18 +148,18 @@ class Web extends CI_Controller
         $data['customer_password'] = md5($this->input->post('customer_password'));
         $data['customer_address'] = $this->input->post('customer_address');
         $data['customer_city'] = $this->input->post('customer_city');
-        $data['customer_country'] = $this->input->post('customer_country');
+        // $data['customer_country'] = $this->input->post('customer_country');
         $data['customer_phone'] = $this->input->post('customer_phone');
-        $data['customer_zipcode'] = $this->input->post('customer_zipcode');
+        // $data['customer_zipcode'] = $this->input->post('customer_zipcode');
 
         $this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
         $this->form_validation->set_rules('customer_email', 'Customer Email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
         $this->form_validation->set_rules('customer_password', 'Customer Password', 'trim|required');
         $this->form_validation->set_rules('customer_address', 'Customer Address', 'trim|required');
         $this->form_validation->set_rules('customer_city', 'Customer City', 'trim|required');
-        $this->form_validation->set_rules('customer_country', 'Customer Country', 'trim|required');
+        // $this->form_validation->set_rules('customer_country', 'Customer Country', 'trim|required');
         $this->form_validation->set_rules('customer_phone', 'Customer Phone', 'trim|required');
-        $this->form_validation->set_rules('customer_zipcode', 'Customer Zipcode', 'trim|required');
+        // $this->form_validation->set_rules('customer_zipcode', 'Customer Zipcode', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->save_customer_info($data);
@@ -375,10 +375,13 @@ class Web extends CI_Controller
         $data['order_info'] = $this->manageorder_model->order_info_by_id($order_id);
 
         $this->load->library('Pdf');
+        $this->load->view('admin/pages/pdf', $data, true);
+
+        // die;
         $this->pdf->load_view('admin/pages/pdf', $data);
         $this->pdf->setPaper('A4', 'portrait');
         $this->pdf->render();
-        $this->pdf->stream("welcome.pdf");
+        $this->pdf->stream($order_id . '.pdf');
     }
 
     public function search()
