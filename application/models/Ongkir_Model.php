@@ -11,7 +11,7 @@ class Ongkir_Model extends CI_Model
         $this->api_key = '9053978a357cb16595600c0acb9e9fc1';
         $this->url = 'https://api.rajaongkir.com/starter/cost';
         $this->origin = 171; //karawang
-        $this->weight = 50; //berat rata2
+        $this->weight = 50000; //berat rata2
     }
 
     // cek harga ongkir dari api raja ongkir
