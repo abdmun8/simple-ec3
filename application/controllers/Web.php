@@ -381,7 +381,7 @@ class Web extends CI_Controller
         $this->pdf->load_view('admin/pages/pdf', $data);
         $this->pdf->setPaper('A4', 'portrait');
         $this->pdf->render();
-        $this->pdf->stream($order_id . '.pdf');
+        $this->pdf->stream('pesanan-' . $order_id . '.pdf');
     }
 
     public function search()
