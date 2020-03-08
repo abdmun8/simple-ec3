@@ -51,6 +51,10 @@
                         <td>Email : </td>
                         <td><?php echo $shipping_info->shipping_email; ?></td>
                     </tr>
+                    <tr>
+                        <td>Kurir : </td>
+                        <td><?php echo strtoupper($shipping_info->shipping_courier); ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -69,8 +73,11 @@
                 <tbody>
                     <?php
                     $i = 0;
+                    $total_line = 0;
                     foreach ($order_details_info as $single_order_details) {
                         $i++;
+                        $total = $single_order_details->product_price * $single_order_details->product_sales_quantity;
+                        $total_line += $total;
                     ?>
                         <tr>
                             <td style="text-align: center; padding-top: 5px;"><?php echo $i; ?></td>
@@ -78,13 +85,23 @@
                             <td style="text-align: center; padding-top: 5px;"><img src="<?php echo base_url('uploads/' . $single_order_details->product_image); ?>" style="width:200px;height:100px" /></td>
                             <td style="text-align: right; padding-top: 5px;">Rp. <?php echo number_format($single_order_details->product_price) ?></td>
                             <td style="text-align: right; padding-top: 5px;"><?php echo $single_order_details->product_sales_quantity ?></td>
-                            <td style="text-align: right; padding-top: 5px;">Rp. <?php echo number_format($single_order_details->product_price * $single_order_details->product_sales_quantity) ?></td>
+                            <td style="text-align: right; padding-top: 5px;">Rp. <?php echo number_format($total_line) ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
                 <tfoot class="table-inverse">
-                    <td style="text-align: right; border-top: 1px solid black;" colspan="5">Total Amount</td>
-                    <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($order_info->order_total) ?></td>
+                    <tr>
+                        <td style="text-align: right; border-top: 1px solid black;" colspan="5">Ongkos Kirim</td>
+                        <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($shipping_info->shipping_cost) ?></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; border-top: 1px solid black;" colspan="5">PPN</td>
+                        <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format(0.1 * $total_line) ?></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; border-top: 1px solid black;" colspan="5">Total Amount</td>
+                        <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($total_line + $shipping_info->shipping_cost + (0.1 * $total_line)) ?></td>
+                    </tr>
                 </tfoot>
             </table>
         </div>
