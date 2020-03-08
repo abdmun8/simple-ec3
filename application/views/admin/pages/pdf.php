@@ -94,13 +94,13 @@
                         <td style="text-align: right; border-top: 1px solid black;" colspan="5">Ongkos Kirim</td>
                         <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($shipping_info->shipping_cost) ?></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td style="text-align: right; border-top: 1px solid black;" colspan="5">PPN</td>
                         <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format(0.1 * $total_line) ?></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td style="text-align: right; border-top: 1px solid black;" colspan="5">Total Amount</td>
-                        <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($total_line + $shipping_info->shipping_cost + (0.1 * $total_line)) ?></td>
+                        <td style="text-align: right; border-top: 1px solid black;">Rp. <?php echo number_format($total_line + $shipping_info->shipping_cost) ?></td>
                     </tr>
                 </tfoot>
             </table>

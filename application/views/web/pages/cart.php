@@ -49,18 +49,8 @@
                             <td>Rp. <?php echo $this->cart->format_number($this->cart->total()) ?></td>
                         </tr>
                         <tr>
-                            <th>PPN : </th>
-                            <td>Rp.
-                                <?php
-                                $total = $this->cart->total();
-                                $tax = ($total * 10) / 100;
-                                echo $this->cart->format_number($tax);
-                                ?>
-                            </td>
-                        </tr>
-                        <tr>
                             <th>Grand Total :</th>
-                            <td>Rp. <?php echo $this->cart->format_number($tax + $this->cart->total()); ?> </td>
+                            <td>Rp. <?php echo $this->cart->format_number($this->cart->total()); ?> </td>
                         </tr>
                     </table>
                 <?php
